@@ -1,0 +1,7 @@
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\HelloWorldIIS.exe
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\appsettings.Development.json
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\appsettings.json
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\HelloWorldIIS.dll
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\HelloWorldIIS.deps.json
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\HelloWorldIIS.runtimeconfig.json
+C:\Users\hanlinkyaw\Desktop\NEAE_Me\PROJECT-NM\hello-IIS\HelloWorldIIS\publish\HelloWorldIIS.pdb

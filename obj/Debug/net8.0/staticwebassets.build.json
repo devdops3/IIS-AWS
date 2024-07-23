@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1q0M7D5bFN3XSeO/Spff8ZPnn9KF66uXf08si8RtHdk=",
+  "Source": "HelloWorldIIS",
+  "BasePath": "_content/HelloWorldIIS",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
