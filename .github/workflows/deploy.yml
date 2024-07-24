@@ -22,6 +22,3 @@ jobs:
       env:
         DEPLOY_USER: ${{ secrets.AWS_USERNAME }}
         DEPLOY_PASS: ${{ secrets.AWS_PASSWORD }}
-      with:
-        username: ${{ secrets.AWS_USERNAME }}
-        password: ${{ secrets.AWS_PASSWORD }}
