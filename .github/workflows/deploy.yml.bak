@@ -1,0 +1,34 @@
+name: .NET Deployment to AWS IIS
+
+on:
+  push:
+    branches:
+      - main  # Set this to your default branch
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Deploy to IIS
+      run: |
+        # Copy files to your IIS directory
+        robocopy ${{ github.workspace }}/publish \\<172.30.192.6>\D:\Websites\NearMe\UAT /MIR
+        # Restart IIS to load new files
+        #Invoke-Command -ComputerName "<AWS-IP-ADDRESS>" -ScriptBlock { Restart-Service W3SVC }
+      env:
+        DEPLOY_USER: ${{ secrets.AWS_USERNAME }}
+        DEPLOY_PASS: ${{ secrets.AWS_PASSWORD }}
+      with:
+        username: ${{ secrets.AWS_USERNAME }}
+        password: ${{ secrets.AWS_PASSWORD }}
+
+        #    - name: Cleanup After Deploy
+        #      run: |
+        #        Remove-Item -Path "publish" -Recurse -Force
+
