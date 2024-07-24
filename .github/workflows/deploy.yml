@@ -23,7 +23,7 @@ jobs:
 
     - name: Map Network Drive
       run: |
-        net use Z: \\<AWS-IP-ADDRESS>\D$ /user:${{ secrets.AWS_USERNAME }} ${{ secrets.AWS_PASSWORD }}
+        net use Z: \\<172.30.192.6>\D$ /user:${{ secrets.AWS_USERNAME }} ${{ secrets.AWS_PASSWORD }}
         robocopy ${GITHUB_WORKSPACE}\publish Z:\Websites\NearMe\UAT /MIR
         net use Z: /delete
       env:
