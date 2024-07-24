@@ -14,11 +14,29 @@ jobs:
 
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v1.1
-      
-    - name: Deploy to IIS
+
+    - name: Build with MSBuild
+      run: msbuild /p:Configuration=Release
+
+    - name: Publish project
+      run: dotnet publish -c Release -o publish
+
+    - name: Map Network Drive
       run: |
-        # Copy files to your IIS directory
-        robocopy ${{ github.workspace }}/publish \\<172.30.192.6>\D:\Websites\NearMe\UAT /MIR
+        net use Z: \\<AWS-IP-ADDRESS>\D$ /user:${{ secrets.AWS_USERNAME }} ${{ secrets.AWS_PASSWORD }}
+        robocopy ${GITHUB_WORKSPACE}\publish Z:\Websites\NearMe\UAT /MIR
+        net use Z: /delete
       env:
         DEPLOY_USER: ${{ secrets.AWS_USERNAME }}
         DEPLOY_PASS: ${{ secrets.AWS_PASSWORD }}
+
+    - name: Restart IIS
+      run: |
+        $user = "${{ secrets.AWS_USERNAME }}"
+        $pass = ConvertTo-SecureString "${{ secrets.AWS_PASSWORD }}" -AsPlainText -Force
+        $cred = New-Object System.Management.Automation.PSCredential($user, $pass)
+        Invoke-Command -ComputerName "<AWS-IP-ADDRESS>" -ScriptBlock { Restart-Service W3SVC } -Credential $cred
+
+    - name: Cleanup After Deploy
+      run: Remove-Item -Path "publish" -Recurse -Force
+
